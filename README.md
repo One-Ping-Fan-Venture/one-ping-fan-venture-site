@@ -41,3 +41,6 @@ npm run build
 - Modify global styles in `/src/app/globals.css`
 - Update metadata in `/src/app/layout.tsx`
 - Add your content in `/src/app/page.tsx`
+- Enable privacy-first analytics by setting `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` to your Plausible site
+  domain. Custom click handlers for hero, contact, and ZenShift CTAs are wired to anonymous events
+  via `src/lib/analytics.ts`.
