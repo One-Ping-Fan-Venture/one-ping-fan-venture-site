@@ -17,6 +17,7 @@ import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import DomainAddIcon from '@mui/icons-material/DomainAdd';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+import { trackEvent } from '@/lib/analytics';
 
 const venturePillars = [
   {
@@ -78,6 +79,10 @@ const recentWins = [
   },
 ];
 
+const handleHeroCtaClick = (target: string) => trackEvent('Hero CTA Click', { target });
+const handlePortfolioClick = () => trackEvent('Portfolio CTA Click', { target: 'email' });
+const handleContactCtaClick = (target: string) => trackEvent('Contact CTA Click', { target });
+
 export default function HomePage() {
   return (
     <main>
@@ -124,6 +129,7 @@ export default function HomePage() {
                     href="mailto:hello@onepingfan.com?subject=Discovery%20call"
                     endIcon={<ArrowForwardIcon />}
                     sx={{ minWidth: 220, fontWeight: 700 }}
+                    onClick={() => handleHeroCtaClick('discovery-call')}
                   >
                     Schedule a discovery call
                   </Button>
@@ -133,6 +139,7 @@ export default function HomePage() {
                     size="large"
                     href="#programs"
                     sx={{ minWidth: 220, fontWeight: 700 }}
+                    onClick={() => handleHeroCtaClick('methodology')}
                   >
                     View our methodology
                   </Button>
@@ -348,6 +355,7 @@ export default function HomePage() {
                 underline="hover"
                 color="primary.main"
                 sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, fontWeight: 700 }}
+                onClick={handlePortfolioClick}
               >
                 See full portfolio
                 <ArrowForwardIcon fontSize="small" />
@@ -412,6 +420,7 @@ export default function HomePage() {
                     size="large"
                     href="mailto:hello@onepingfan.com?subject=Venture%20conversation"
                     endIcon={<ArrowForwardIcon />}
+                    onClick={() => handleContactCtaClick('start-conversation')}
                   >
                     Start a conversation
                   </Button>
@@ -420,6 +429,7 @@ export default function HomePage() {
                     color="primary"
                     size="large"
                     href="mailto:hello@onepingfan.com?subject=One%20pager%20request"
+                    onClick={() => handleContactCtaClick('one-pager')}
                   >
                     Download our one-pager
                   </Button>
