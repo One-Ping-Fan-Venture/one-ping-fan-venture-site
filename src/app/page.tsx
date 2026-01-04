@@ -141,23 +141,6 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* Footer */}
-      <Box
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.grey[200]}`,
-          py: 4,
-          bgcolor: 'background.default',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Stack alignItems="center">
-            <Link href="mailto:hello@onepingfanventure.com" underline="hover" sx={{ fontWeight: 600 }}>
-              hello@onepingfanventure.com
-            </Link>
-          </Stack>
-        </Container>
-      </Box>
     </main>
   );
 }
