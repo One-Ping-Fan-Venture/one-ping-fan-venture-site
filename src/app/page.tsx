@@ -5,10 +5,26 @@ import {
   Card,
   CardContent,
   Container,
+  Grid,
   Link,
   Stack,
   Typography,
 } from '@mui/material';
+
+const products = [
+  {
+    name: 'MileClerk',
+    description:
+      'MileClerk is an automatic mileage tracker for solo workers — contractors, gig drivers, and the self-employed. It captures every drive automatically, classifies trips, and keeps export-ready mileage records for tax time.',
+    url: 'https://mileclerk.onepingfanventure.com/',
+  },
+  {
+    name: 'ZenShift',
+    description:
+      'ZenShift is an AI-powered meditation and mindfulness application designed to deliver personalized, adaptive experiences.',
+    url: 'https://zenshift.onepingfanventure.com/',
+  },
+];
 
 export default function HomePage() {
   return (
@@ -94,7 +110,7 @@ export default function HomePage() {
         </Stack>
       </Container>
 
-      {/* First Product Section */}
+      {/* Products Section */}
       <Box
         component="section"
         sx={{
@@ -106,37 +122,42 @@ export default function HomePage() {
         <Container maxWidth="lg">
           <Stack spacing={4}>
             <Typography variant="h2" component="h2" sx={{ fontWeight: 800 }}>
-              First Product
+              Products
             </Typography>
-            <Card
-              elevation={0}
-              sx={{
-                maxWidth: 600,
-                borderRadius: 3,
-                border: (theme) => `1px solid ${theme.palette.grey[200]}`,
-                boxShadow: (theme) => `0 12px 36px ${theme.palette.grey[300]}66`,
-              }}
-            >
-              <CardContent sx={{ p: 4 }}>
-                <Stack spacing={2}>
-                  <Typography variant="h3" component="h3" sx={{ fontSize: 24, fontWeight: 800 }}>
-                    ZenShift
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                    The first product developed under One Ping Fan Venture LLC is ZenShift, an AI-powered
-                    meditation and mindfulness application designed to deliver personalized, adaptive experiences.
-                  </Typography>
-                  <Link
-                    href="https://zenshift.onepingfanventure.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{ fontWeight: 700 }}
+            <Grid container spacing={3}>
+              {products.map((product) => (
+                <Grid item xs={12} md={6} key={product.name}>
+                  <Card
+                    elevation={0}
+                    sx={{
+                      height: '100%',
+                      borderRadius: 3,
+                      border: (theme) => `1px solid ${theme.palette.grey[200]}`,
+                      boxShadow: (theme) => `0 12px 36px ${theme.palette.grey[300]}66`,
+                    }}
                   >
-                    zenshift.onepingfanventure.com
-                  </Link>
-                </Stack>
-              </CardContent>
-            </Card>
+                    <CardContent sx={{ p: 4 }}>
+                      <Stack spacing={2}>
+                        <Typography variant="h3" component="h3" sx={{ fontSize: 24, fontWeight: 800 }}>
+                          {product.name}
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                          {product.description}
+                        </Typography>
+                        <Link
+                          href={product.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{ fontWeight: 700 }}
+                        >
+                          {product.url.replace('https://', '').replace(/\/$/, '')}
+                        </Link>
+                      </Stack>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Stack>
         </Container>
       </Box>
